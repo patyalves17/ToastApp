@@ -1,3 +1,4 @@
+
 apply plugin: 'com.android.application'
 
 android {
@@ -16,6 +17,7 @@ android {
             storeFile file("../.sign/apk.keystore")
             storePassword "storePassword"
             keyPassword "keyPassword"
+            keyAlias "keyAlias"
         }
     }
     buildTypes {
