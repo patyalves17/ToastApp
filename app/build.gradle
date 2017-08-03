@@ -11,10 +11,38 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs{
+        release{
+            storeFile file("../.sign/apk.keystore")
+            storePassword "storePassword"
+            keyPassword "keyPassword"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfig.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("boolean","REPORT_CRASH","true")
+
+        }
+        homolog{
+            signingConfig signingConfig.release
+            buildConfigField("boolean","REPORT_CRASH","true")
+        }
+        debug{
+            buildConfigField("boolean","REPORT_CRASH","false")
+        }
+    }
+    productFlavors{
+        normal{}
+        demo{
+            applicationIdSuffix=".demo"
+        }
+        diferentao{
+            applicationId "com.fiap.paty.diferentao"
+            versionName "0.0.1"
+            versionCode 1
         }
     }
 }

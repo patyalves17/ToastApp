@@ -13,6 +13,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         CustomToast toast =new CustomToast();
-        toast.showToast(getApplicationContext(),"Ola");
+        if(BuildConfig.REPORT_CRASH) {
+            toast.showToast(getApplicationContext(), "Report Crash");
+        }else{
+                toast.showToast(getApplicationContext(),"No Report Crash");
+        }
+
     }
 }
